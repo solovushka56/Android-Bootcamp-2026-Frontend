@@ -7,7 +7,7 @@ import java.time.Instant
 @Serializable
 data class InviteDto(
     @SerialName("id")
-    val id: Int?,
+    val id: Long?,
     @SerialName("meetId")
     val meetId: Int?,
     @SerialName("inviterUserId")

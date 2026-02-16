@@ -18,7 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import ru.sicampus.bootcamp2026.presentation.ui.theme.AndroidBootcamp2026FrontendTheme
 
-data class Invite(
+private data class InviteTest(
     val title: String,
     val time: String,
     val date: String,
@@ -28,19 +28,19 @@ data class Invite(
 @Composable
 fun InvitesScreen() {
     val invites = listOf(
-        Invite(
+        InviteTest(
             title = "Обсуждение требований",
             time = "00:00",
             date = "01.01",
             author = "Иван Иванов"
         ),
-        Invite(
+        InviteTest(
             title = "Планирование тестирования",
             time = "9:20",
             date = "5 апр.",
             author = "Иван Лебедев"
         ),
-        Invite(
+        InviteTest(
             title = "Синхронизация по срокам",
             time = "00:00",
             date = "01.01",

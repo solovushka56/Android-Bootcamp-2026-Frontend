@@ -1,6 +1,5 @@
 package ru.sicampus.bootcamp2026.presentation.ui.screens.main.create.users.list
 
-import android.renderscript.Allocation
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -27,9 +26,9 @@ fun UsersList(
     val state by viewModel.state.collectAsState()
 
     when(val currentState = state) {
-        is ListState.Loading -> ListLoadingState()
-        is ListState.Content -> ListContentState(currentState)
-        is ListState.Error -> ListErrorState(currentState, onRefresh = {viewModel.getData()})
+        is MeetsState.Loading -> ListLoadingState()
+        is MeetsState.Content -> ListContentState(currentState)
+        is MeetsState.Error -> ListErrorState(currentState, onRefresh = {viewModel.getData()})
     }
 
 }
@@ -50,7 +49,7 @@ fun ListLoadingState() {
 
 @Composable
 fun ListErrorState(
-    state: ListState.Error,
+    state: MeetsState.Error,
     onRefresh: () -> Unit,
 ) {
     Box(
@@ -70,7 +69,7 @@ fun ListErrorState(
 
 @Composable
 fun ListContentState(
-    state: ListState.Content
+    state: MeetsState.Content
 ) {
     LazyColumn(
         modifier = Modifier.fillMaxWidth()

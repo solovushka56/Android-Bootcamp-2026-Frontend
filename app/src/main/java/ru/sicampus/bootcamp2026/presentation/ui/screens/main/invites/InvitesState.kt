@@ -1,7 +1,6 @@
 package ru.sicampus.bootcamp2026.presentation.ui.screens.main.invites
 
-import ru.sicampus.bootcamp2026.domain.models.invite.Invite
-import ru.sicampus.bootcamp2026.domain.models.meet.Meet
+import ru.sicampus.bootcamp2026.domain.entities.invite.Invite
 
 sealed interface InvitesState {
     data object Loading: InvitesState

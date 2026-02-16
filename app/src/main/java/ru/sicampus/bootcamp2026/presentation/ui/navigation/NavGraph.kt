@@ -12,7 +12,7 @@ import ru.sicampus.bootcamp2026.presentation.ui.navigation.routes.RegRoute
 import ru.sicampus.bootcamp2026.presentation.ui.navigation.routes.StartRoute
 import ru.sicampus.bootcamp2026.presentation.ui.screens.main.MenuScreen
 import ru.sicampus.bootcamp2026.presentation.ui.screens.start.StartScreen
-import ru.sicampus.bootcamp2026.presentation.ui.screens.start.auth.AuthScreen
+import ru.sicampus.bootcamp2026.presentation.ui.screens.start.login.AuthScreen
 import ru.sicampus.bootcamp2026.presentation.ui.screens.start.reg.RegScreen
 
 

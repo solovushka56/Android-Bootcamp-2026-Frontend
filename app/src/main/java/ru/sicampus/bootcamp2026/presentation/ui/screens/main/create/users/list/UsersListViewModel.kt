@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class MyListViewModel : ViewModel() {
-    private val _state: MutableStateFlow<ListState> = MutableStateFlow<ListState>(ListState.Loading)
+    private val _state: MutableStateFlow<MeetsState> = MutableStateFlow<MeetsState>(MeetsState.Loading)
     val state = _state.asStateFlow()
 
 
@@ -18,9 +18,9 @@ class MyListViewModel : ViewModel() {
 
     fun getData() {
         viewModelScope.launch {
-            _state.emit(ListState.Loading)
+            _state.emit(MeetsState.Loading)
             delay(2000L) // todo
-            _state.emit(ListState.Error("Mock Error"))
+            _state.emit(MeetsState.Error("Mock Error"))
         }
     }
 }

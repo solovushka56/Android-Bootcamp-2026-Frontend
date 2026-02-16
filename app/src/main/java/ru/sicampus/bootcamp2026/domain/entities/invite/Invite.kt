@@ -1,9 +1,9 @@
-package ru.sicampus.bootcamp2026.domain.models.invite
+package ru.sicampus.bootcamp2026.domain.entities.invite
 
 import java.time.Instant
 
 data class Invite(
-    val id: Int,
+    val id: Long,
     val meetId: Int,
     val inviterUserId: Int,
     val invitedUserId: Int,

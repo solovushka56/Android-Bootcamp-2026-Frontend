@@ -1,8 +1,8 @@
-package ru.sicampus.bootcamp2026.domain.models.meet
+package ru.sicampus.bootcamp2026.domain.entities.meet
 import java.time.Instant
 
 data class Meet(
-    val id: Int,
+    val id: Long,
     val organizerId: Int,
     val title: String,
     val description: String?,

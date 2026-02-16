@@ -1,7 +1,7 @@
 package ru.sicampus.bootcamp2026.data.mappers
 
 import ru.sicampus.bootcamp2026.data.dto.UserDto
-import ru.sicampus.bootcamp2026.domain.models.User
+import ru.sicampus.bootcamp2026.domain.entities.User
 
 fun UserDto.toDomain(): User? {
     return User(

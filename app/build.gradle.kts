@@ -68,4 +68,6 @@ dependencies {
     implementation(libs.androidx.compose.material.icons.extended)
     implementation(libs.bundles.ktor)
 
+    implementation(libs.androidx.datastore.preferences)
+
 }

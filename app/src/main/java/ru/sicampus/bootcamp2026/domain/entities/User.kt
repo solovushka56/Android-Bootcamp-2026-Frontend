@@ -1,7 +1,7 @@
-package ru.sicampus.bootcamp2026.domain.models
+package ru.sicampus.bootcamp2026.domain.entities
 
 data class User(
-    val id: Int,
+    val id: Long,
     val email: String,
     val firstName: String,
     val lastName: String,

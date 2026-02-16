@@ -2,8 +2,8 @@ package ru.sicampus.bootcamp2026.data.mappers
 
 import ru.sicampus.bootcamp2026.data.dto.MeetDto
 import ru.sicampus.bootcamp2026.data.dto.MeetTimeSlotDto
-import ru.sicampus.bootcamp2026.domain.models.meet.Meet
-import ru.sicampus.bootcamp2026.domain.models.meet.MeetTimeSlot
+import ru.sicampus.bootcamp2026.domain.entities.meet.Meet
+import ru.sicampus.bootcamp2026.domain.entities.meet.MeetTimeSlot
 import java.time.Instant
 import java.time.LocalDate
 
@@ -33,14 +33,16 @@ fun Meet.toDto(): MeetDto = MeetDto(
 
 fun MeetTimeSlotDto.toDomain(): MeetTimeSlot? {
     return MeetTimeSlot(
+        id = id,
         date = LocalDate.parse(date),
         startHour = startHour ?: return null,
-        durationHours = durationHours ?: return null,
+        endHour = endHour ?: return null,
     )
 }
 
 fun MeetTimeSlot.toDto(): MeetTimeSlotDto = MeetTimeSlotDto(
+    id = id,
     date = date.toString(),
     startHour = startHour,
-    durationHours = durationHours
+    endHour = endHour
 )

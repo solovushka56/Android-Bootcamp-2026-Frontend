@@ -1,4 +1,12 @@
 package ru.sicampus.bootcamp2026.domain.usecases.meets
 
-class GetActiveMeetsUseCase {
+import ru.sicampus.bootcamp2026.data.repos.MeetsRepository
+import ru.sicampus.bootcamp2026.domain.entities.meet.Meet
+
+class GetActiveMeetsUseCase(
+    private val meetsRepository: MeetsRepository
+) {
+    suspend operator fun invoke(): Result<List<Meet>> {
+        return meetsRepository.getMeets()
+    }
 }

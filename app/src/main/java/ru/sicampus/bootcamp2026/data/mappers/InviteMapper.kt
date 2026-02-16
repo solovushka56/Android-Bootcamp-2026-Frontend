@@ -2,8 +2,8 @@ package ru.sicampus.bootcamp2026.data.mappers
 
 import ru.sicampus.bootcamp2026.data.dto.InviteDto
 import ru.sicampus.bootcamp2026.data.dto.InviteStatusDto
-import ru.sicampus.bootcamp2026.domain.models.invite.Invite
-import ru.sicampus.bootcamp2026.domain.models.invite.InviteStatus
+import ru.sicampus.bootcamp2026.domain.entities.invite.Invite
+import ru.sicampus.bootcamp2026.domain.entities.invite.InviteStatus
 import java.time.Instant
 
 fun InviteDto.toDomain(): Invite? {

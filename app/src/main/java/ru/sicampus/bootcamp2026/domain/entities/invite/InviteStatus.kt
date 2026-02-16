@@ -1,4 +1,4 @@
-package ru.sicampus.bootcamp2026.domain.models.invite
+package ru.sicampus.bootcamp2026.domain.entities.invite
 
 enum class InviteStatus {
     PENDING,

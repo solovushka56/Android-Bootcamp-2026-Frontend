@@ -1,4 +1,4 @@
-package ru.sicampus.bootcamp2026.presentation.ui.screens.main.meets
+package ru.sicampus.bootcamp2026.presentation.ui.screens.main.create.users.list
 
 import ru.sicampus.bootcamp2026.domain.entities.meet.Meet
 
@@ -8,7 +8,7 @@ sealed interface MeetsState {
         val reason: String
     ): MeetsState
     data class Content(
-        val createdMeets: List<Meet>,
-        val invitedMeets: List<Meet>
+        val meets: List<Meet>
     ) : MeetsState
+
 }

@@ -1,4 +1,4 @@
-package ru.sicampus.bootcamp2026.presentation.ui.screens.start.auth
+package ru.sicampus.bootcamp2026.presentation.ui.screens.start.login
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -10,7 +10,6 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
@@ -20,11 +19,11 @@ import ru.sicampus.bootcamp2026.presentation.ui.navigation.routes.MenuRoute
 import ru.sicampus.bootcamp2026.presentation.ui.theme.AndroidBootcamp2026FrontendTheme
 
 @Composable
-fun AuthScreen(
+fun LoginScreen(
     nav: NavHostController,
     onBackClick: () -> Unit = { nav.popBackStack() }
 ) {
-    AuthContent(
+    LoginContent(
         onLoginClick = { nav.navigate(MenuRoute) },
         onBackClick = onBackClick,
         onForgotPasswordClick = { /* TODO */ }
@@ -32,7 +31,7 @@ fun AuthScreen(
 }
 
 @Composable
-private fun AuthContent(
+private fun LoginContent(
     onLoginClick: () -> Unit,
     onBackClick: () -> Unit,
     onForgotPasswordClick: () -> Unit
@@ -241,9 +240,9 @@ private fun AuthContent(
     showSystemUi = true
 )
 @Composable
-fun AuthScreenPreview() {
+fun LoginScreenPreview() {
     AndroidBootcamp2026FrontendTheme {
-        AuthContent(
+        LoginContent(
             onLoginClick = {},
             onBackClick = {},
             onForgotPasswordClick = {}
@@ -259,9 +258,9 @@ fun AuthScreenPreview() {
     uiMode = android.content.res.Configuration.UI_MODE_NIGHT_YES
 )
 @Composable
-fun AuthScreenDarkPreview() {
+fun LoginScreenDarkPreview() {
     AndroidBootcamp2026FrontendTheme {
-        AuthContent(
+        LoginContent(
             onLoginClick = {},
             onBackClick = {},
             onForgotPasswordClick = {}
