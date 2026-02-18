@@ -12,7 +12,7 @@ import ru.sicampus.bootcamp2026.presentation.ui.navigation.routes.RegRoute
 import ru.sicampus.bootcamp2026.presentation.ui.navigation.routes.StartRoute
 import ru.sicampus.bootcamp2026.presentation.ui.screens.main.MenuScreen
 import ru.sicampus.bootcamp2026.presentation.ui.screens.start.StartScreen
-import ru.sicampus.bootcamp2026.presentation.ui.screens.start.login.AuthScreen
+import ru.sicampus.bootcamp2026.presentation.ui.screens.start.login.LoginScreen
 import ru.sicampus.bootcamp2026.presentation.ui.screens.start.reg.RegScreen
 
 
@@ -27,7 +27,7 @@ fun NavGraph(
         startDestination = StartRoute,
     ) {
         composable<StartRoute> { StartScreen(nav = navController) }
-        composable<AuthRoute> { AuthScreen(nav = navController) }
+        composable<AuthRoute> { LoginScreen(nav = navController) }
         composable<RegRoute> { RegScreen(nav = navController) }
         composable<MenuRoute> { MenuScreen(nav = navController) }
     }

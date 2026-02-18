@@ -7,6 +7,7 @@ interface IAuthRepository {
         login: String,
         password: String
     ): Result<UserAuth>
+    suspend fun tryAuthByToken(): Result<UserAuth>
 
 //    suspend fun login(): Result<Unit>
 //    suspend fun logout(): Result<Unit>

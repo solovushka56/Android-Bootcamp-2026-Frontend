@@ -1,3 +1,8 @@
 package ru.sicampus.bootcamp2026.domain.entities.auth
 
-data class UserAuth(val token: String, val userId: Long)
+import ru.sicampus.bootcamp2026.domain.entities.User
+
+data class UserAuth(
+    val user: User,
+//    val token: String,
+)

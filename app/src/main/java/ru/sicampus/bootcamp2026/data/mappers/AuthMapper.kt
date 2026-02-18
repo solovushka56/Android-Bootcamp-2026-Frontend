@@ -5,8 +5,8 @@ import ru.sicampus.bootcamp2026.domain.entities.auth.UserAuth
 
 fun UserAuthDto.toDomain(): UserAuth? {
     return UserAuth(
-        userId = userId ?: return null,
-        token = token ?: return null
+        user = userDto?.toDomain() ?: return null,
+//        token = token ?: return null
     )
 }
 
