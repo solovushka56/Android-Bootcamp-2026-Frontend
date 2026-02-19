@@ -13,4 +13,14 @@ class MeetsRepository(
             meetDtos.mapNotNull { meetDto -> meetDto.toDomain() }
         }
     }
+
+    override suspend fun createMeet(meet: Meet): Result<Unit> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun removeMeet(id: Meet): Result<Unit> {
+        TODO("Not yet implemented")
+    }
+
+
 }

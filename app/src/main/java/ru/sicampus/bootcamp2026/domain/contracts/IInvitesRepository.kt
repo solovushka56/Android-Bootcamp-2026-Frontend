@@ -4,8 +4,6 @@ import ru.sicampus.bootcamp2026.domain.entities.invite.Invite
 
 interface IInvitesRepository {
     suspend fun getInvites(): Result<List<Invite>>
-
-    suspend fun createInvite(): Result<Unit>
-
-    suspend fun removeInvite(invite: Invite): Result<Unit>
+    suspend fun inviteUser(meetId: Long, invitedUserId: Long): Result<Unit>
+//    suspend fun removeInvite(inviteId: Long): Result<Unit>
 }

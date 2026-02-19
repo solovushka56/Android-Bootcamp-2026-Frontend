@@ -8,5 +8,4 @@ class CreateMeetUseCase(
 ) {
     suspend operator fun invoke(meet: Meet): Result<Unit> =
         meetRepository.createMeet(meet)
-
 }

@@ -13,7 +13,7 @@ fun InviteDto.toDomain(): Invite? {
         inviterUserId = inviterUserId ?: return null,
         invitedUserId = invitedUserId ?: return null,
         status = status?.toDomain() ?: return null,
-        createdAt = Instant.parse(createdAt) ?: return null,
+        createdAt = runCatching { Instant.parse(createdAt) }.getOrNull() ?: return null,
     )
 }
 

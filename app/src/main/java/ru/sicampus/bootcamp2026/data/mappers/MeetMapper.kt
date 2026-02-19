@@ -16,7 +16,7 @@ fun MeetDto.toDomain(): Meet? {
         timeSlot = timeSlot?.toDomain() ?: return null,
         membersIds = membersIds ?: return null,
         invitedIds = invitedIds ?: return null,
-        createdAt = Instant.parse(createdAt) ?: return null,
+        createdAt = runCatching { Instant.parse(createdAt) }.getOrNull() ?: return null,
     )
 }
 

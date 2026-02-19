@@ -10,16 +10,17 @@ class InvitesRepository(
 ): IInvitesRepository {
 
     override suspend fun getInvites(): Result<List<Invite>> {
-        return invitesDataSource.genInvites().map { inviteDtos ->
+        return invitesDataSource.getInvites().map { inviteDtos ->
             inviteDtos.mapNotNull { inviteDto -> inviteDto.toDomain() }
         }
     }
 
-    override suspend fun createInvite(): Result<Unit> {
+    override suspend fun inviteUser(
+        meetId: Long,
+        invitedUserId: Long
+    ): Result<Unit> {
         TODO("Not yet implemented")
     }
 
-    override suspend fun removeInvite(invite: Invite): Result<Unit> {
-        TODO("Not yet implemented")
-    }
+
 }
