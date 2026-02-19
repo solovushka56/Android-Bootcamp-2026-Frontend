@@ -16,7 +16,6 @@ class InvitesDataSource {
                 error("Status: ${result.status}")
             }
             result.body()
-
         }
     }
 

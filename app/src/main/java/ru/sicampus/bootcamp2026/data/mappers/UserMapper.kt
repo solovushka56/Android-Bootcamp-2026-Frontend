@@ -6,7 +6,7 @@ import ru.sicampus.bootcamp2026.domain.entities.User
 fun UserDto.toDomain(): User? {
     return User(
         id = id ?: return null,
-        email = email ?: return null,
+        email = email ?: return null, // todo to login
         firstName = firstName ?: return null,
         lastName = lastName ?: return null,
         photoUrl = photoUrl, // не nonNull

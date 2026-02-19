@@ -11,7 +11,7 @@ import kotlinx.serialization.json.Json
 import android.util.Log
 
 object Network {
-    const val HOST = "http://localhost:8080"
+    const val HOST = "http://10.0.2.2:8080"
 
     val client by lazy {
         HttpClient(CIO) {
@@ -33,6 +33,15 @@ object Network {
 
             defaultRequest {
                 contentType(ContentType.Application.Json)
+
+                // eсли токен есть в локальном хранилище- добавляем его ко всем запросам
+//                val token = AuthLocalDataSource.getToken()
+//                if (token != null) header("Authorization", "Bearer $token")
+            }
+
+            install(HttpTimeout) {
+                requestTimeoutMillis = 15_000
+                connectTimeoutMillis = 5_000
             }
         }
     }

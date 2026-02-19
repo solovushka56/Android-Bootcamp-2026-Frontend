@@ -6,10 +6,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import ru.sicampus.bootcamp2026.data.repos.MeetsRepository
-import ru.sicampus.bootcamp2026.data.repos.UserRepository
 import ru.sicampus.bootcamp2026.data.source.remote.MeetsDataSource
 import ru.sicampus.bootcamp2026.domain.usecases.meets.GetActiveMeetsUseCase
-import ru.sicampus.bootcamp2026.presentation.ui.screens.main.create.users.list.ListContentState
 import ru.sicampus.bootcamp2026.presentation.ui.screens.main.create.users.list.MeetsState
 
 class MeetsViewModel : ViewModel() {

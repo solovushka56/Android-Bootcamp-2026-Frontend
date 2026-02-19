@@ -22,7 +22,7 @@ object AuthLocalDataSource {
 
     suspend fun getToken(): String? {
         if (_cacheToken == null) {
-            _cacheToken = App.context.dataStore.data.firstOrNull()?.get(TOKEN_KEY) // или так
+            _cacheToken = App.context.dataStore.data.firstOrNull()?.get(TOKEN_KEY)
         }
         return _cacheToken
     }
@@ -33,6 +33,7 @@ object AuthLocalDataSource {
         }
     }
 
+    suspend fun hasToken() = getToken() != null
     suspend fun clearToken() {
         App.context.dataStore.edit { prefs ->
             prefs.remove(TOKEN_KEY)

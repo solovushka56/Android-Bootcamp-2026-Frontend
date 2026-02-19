@@ -8,13 +8,24 @@ import kotlinx.coroutines.withContext
 import ru.sicampus.bootcamp2026.data.dto.UserDto
 
 class UserInfoDataSource {
-    suspend fun getUser() : Result<List<UserDto>> = withContext(Dispatchers.IO) {
+    suspend fun getUsersBySearch(query: String // alya filter
+    ): Result<List<UserDto>> = withContext(Dispatchers.IO) {
         runCatching {
-            val result = Network.client.get("${Network.HOST}/api/person")
-            if (result.status != HttpStatusCode.OK) {
-                error("Status: ${result.status}")
+            val response = Network.client.get("${Network.HOST}/api/users/search") {
+                addAuthHeader()
+
+                url {
+                    parameters.append("q", query)
+                }
             }
-            result.body()
+            if (response.status != HttpStatusCode.OK) {
+                error("status: ${response.status}")
+            }
+
+            response.body()
         }
     }
+
+
+
 }
