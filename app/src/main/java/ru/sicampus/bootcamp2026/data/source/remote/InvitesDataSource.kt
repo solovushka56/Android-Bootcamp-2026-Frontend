@@ -9,13 +9,16 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import ru.sicampus.bootcamp2026.data.dto.InviteDto
 import ru.sicampus.bootcamp2026.data.dto.InviteStatusDto
+import ru.sicampus.bootcamp2026.data.source.local.AuthLocalDataSource
 import ru.sicampus.bootcamp2026.domain.entities.invite.Invite
 
-class InvitesDataSource {
+class InvitesDataSource(
+    val authLocalDataSource: AuthLocalDataSource
+) {
     suspend fun getInvites(): Result<List<InviteDto>> = withContext(Dispatchers.IO) {
         runCatching {
             val response = Network.client.get("${Network.HOST}/api/invites") {
-                addAuthHeader()
+                addAuthHeader(authLocalDataSource)
             }
             if (response.status != HttpStatusCode.OK) {
                 error("Status: ${response.status}")
@@ -28,7 +31,7 @@ class InvitesDataSource {
         withContext(Dispatchers.IO) {
         runCatching {
             val response = Network.client.patch("${Network.HOST}/api/invites/$id") {
-                addAuthHeader()
+                addAuthHeader(authLocalDataSource)
                 setBody(mapOf("status" to status))
             }
             if (response.status != HttpStatusCode.OK) {

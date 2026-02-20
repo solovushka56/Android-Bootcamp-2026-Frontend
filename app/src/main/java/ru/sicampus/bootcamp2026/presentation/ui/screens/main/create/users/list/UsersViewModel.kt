@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class MyListViewModel : ViewModel() {
+class UsersViewModel : ViewModel() {
     private val _state: MutableStateFlow<MeetsState> = MutableStateFlow<MeetsState>(MeetsState.Loading)
     val state = _state.asStateFlow()
 

@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import ru.sicampus.bootcamp2026.data.dto.UserDto
 import ru.sicampus.bootcamp2026.domain.entities.User
 
-object ProfileLocalDataSource {
+class ProfileLocalDataSource {
     private val _currentUser = MutableStateFlow<UserDto?>(null)
     val currentUser = _currentUser.asStateFlow()
 

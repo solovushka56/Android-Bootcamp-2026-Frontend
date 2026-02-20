@@ -1,13 +1,10 @@
 package ru.sicampus.bootcamp2026.domain.usecases.auth
 
 import kotlinx.coroutines.test.runTest
-import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
-import org.junit.runner.RunWith
 import ru.sicampus.bootcamp2026.domain.entities.User
 import ru.sicampus.bootcamp2026.domain.entities.auth.UserAuth
-import ru.sicampus.bootcamp2026.domain.usecases.auth.AuthByCredentialsUseCase
 import ru.sicampus.bootcamp2026.testdoubles.FakeAuthRepository
 
 class AuthByCredentialsUseCaseTest {
@@ -28,7 +25,7 @@ class AuthByCredentialsUseCaseTest {
     }
 
     @Test
-    fun `returns success if repo success`() = runTest {
+    fun returnsSuccessIfRepoSuccess() = runTest {
         val repo = FakeAuthRepository().apply {
             checkAndAuthResult = Result.success(fakeUserAuth())
         }

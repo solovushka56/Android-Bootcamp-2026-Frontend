@@ -21,7 +21,7 @@ import ru.sicampus.bootcamp2026.presentation.ui.theme.AppTypography
 
 @Composable
 fun UsersList(
-    viewModel: MyListViewModel = viewModel()
+    viewModel: UsersViewModel = viewModel()
 ) {
     val state by viewModel.state.collectAsState()
 

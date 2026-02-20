@@ -73,4 +73,7 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
     testImplementation(libs.kotlinx.coroutines.test)
 
+    implementation("io.insert-koin:koin-androidx-compose:4.0.1")
+
+
 }

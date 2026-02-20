@@ -12,17 +12,20 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import ru.sicampus.bootcamp2026.data.dto.UserAuthDto
 import ru.sicampus.bootcamp2026.data.dto.UserDto
+import ru.sicampus.bootcamp2026.data.dto.UserRegDto
 import ru.sicampus.bootcamp2026.data.source.local.AuthLocalDataSource
 
-object AuthNetworkDataSource {
+class AuthNetworkDataSource(
+    val authLocalDataSource: AuthLocalDataSource
+) {
 
-    suspend fun register(userDto: UserDto): Result<UserAuthDto> = withContext(Dispatchers.IO) {
-        if (AuthLocalDataSource.hasToken()) // fail if already logged in
+    suspend fun register(userRegDto: UserRegDto): Result<UserAuthDto> = withContext(Dispatchers.IO) {
+        if (authLocalDataSource.hasToken()) // fail if already logged in
             return@withContext Result.failure(Exception("Already registered"))
 
         runCatching {
             val response = Network.client.post("${Network.HOST}/api/register") {
-                setBody(userDto)
+                setBody(userRegDto)
             }
             if (!response.status.isSuccess()) error("error ${response.status}")
 
@@ -32,12 +35,12 @@ object AuthNetworkDataSource {
 
 
     suspend fun tryAuthByToken(): Result<UserAuthDto> = withContext(Dispatchers.IO) {
-        if (!AuthLocalDataSource.hasToken())
+        if (!authLocalDataSource.hasToken())
             return@withContext Result.failure(Exception("No token"))
 
         runCatching {
             val response: HttpResponse = Network.client.get("${Network.HOST}/api/person/auth") {
-                addAuthHeader()
+                addAuthHeader(authLocalDataSource)
             }
             response.body<UserAuthDto>()
             // возвращать failure по статус кодам todo
@@ -45,7 +48,4 @@ object AuthNetworkDataSource {
             // поэтому нет нужды ловить их тут
         }
     }
-
-
-
 }
