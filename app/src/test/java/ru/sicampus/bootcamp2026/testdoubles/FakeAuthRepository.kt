@@ -1,7 +1,7 @@
 package ru.sicampus.bootcamp2026.testdoubles
 
 import ru.sicampus.bootcamp2026.domain.contracts.IAuthRepository
-import ru.sicampus.bootcamp2026.domain.entities.User
+import ru.sicampus.bootcamp2026.domain.entities.user.User
 import ru.sicampus.bootcamp2026.domain.entities.auth.UserAuth
 
 class FakeAuthRepository(): IAuthRepository {

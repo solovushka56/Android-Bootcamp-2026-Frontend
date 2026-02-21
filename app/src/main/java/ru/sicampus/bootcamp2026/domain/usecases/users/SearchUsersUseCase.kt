@@ -1,7 +1,7 @@
 package ru.sicampus.bootcamp2026.domain.usecases.users
 
 import ru.sicampus.bootcamp2026.data.repos.UsersRepository
-import ru.sicampus.bootcamp2026.domain.entities.User
+import ru.sicampus.bootcamp2026.domain.entities.user.User
 
 class SearchUsersUseCase(
     private val userRepository: UsersRepository

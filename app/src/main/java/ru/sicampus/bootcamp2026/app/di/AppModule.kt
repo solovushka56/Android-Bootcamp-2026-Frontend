@@ -8,3 +8,10 @@ val appModules = listOf(
     useCaseModule,
     viewModelModule,
 )
+
+val fakeAppModules = listOf(
+    dataSourceModule,
+    fakeReposModule,
+    useCaseModule,
+    viewModelModule,
+)

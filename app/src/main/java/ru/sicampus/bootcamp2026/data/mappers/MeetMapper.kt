@@ -33,7 +33,7 @@ fun Meet.toDto(): MeetDto = MeetDto(
 
 fun MeetTimeSlotDto.toDomain(): MeetTimeSlot? {
     return MeetTimeSlot(
-        id = id,
+        id = id ?: return null,
         date = LocalDate.parse(date),
         startHour = startHour ?: return null,
         endHour = endHour ?: return null,

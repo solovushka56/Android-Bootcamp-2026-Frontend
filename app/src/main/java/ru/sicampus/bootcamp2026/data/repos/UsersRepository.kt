@@ -3,7 +3,7 @@ package ru.sicampus.bootcamp2026.data.repos
 import ru.sicampus.bootcamp2026.data.mappers.toDomain
 import ru.sicampus.bootcamp2026.data.source.remote.UsersDataSource
 import ru.sicampus.bootcamp2026.domain.contracts.IUsersRepository
-import ru.sicampus.bootcamp2026.domain.entities.User
+import ru.sicampus.bootcamp2026.domain.entities.user.User
 
 class UsersRepository(
     private val usersDataSource: UsersDataSource

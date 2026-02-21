@@ -1,7 +1,9 @@
 package ru.sicampus.bootcamp2026.presentation.ui.screens.start.login
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.*
@@ -12,36 +14,63 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.LocalLifecycleOwner
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
+import org.koin.androidx.compose.koinViewModel
 import ru.sicampus.bootcamp2026.presentation.ui.navigation.routes.MenuRoute
-import ru.sicampus.bootcamp2026.presentation.ui.theme.AndroidBootcamp2026FrontendTheme
 
 @Composable
 fun LoginScreen(
     nav: NavHostController,
-    onBackClick: () -> Unit = { nav.popBackStack() }
+    onBackClick: () -> Unit = { nav.popBackStack() },
+    viewModel: LoginViewModel = koinViewModel()
 ) {
-    LoginContent(
-        onLoginClick = { nav.navigate(MenuRoute) },
-        onBackClick = onBackClick,
-        onForgotPasswordClick = { /* TODO */ }
-    )
+
+
+    Column(modifier = Modifier
+        .fillMaxSize()
+        .verticalScroll(rememberScrollState())
+    ) {
+        LoginContent(
+            viewModel = viewModel,
+            nav = nav,
+            onLoginClick = { viewModel.authWithCredentials() },
+            onBackClick = onBackClick,
+            onForgotPasswordClick = { /* TODO */ }
+        )
+    }
+
 }
 
 @Composable
 private fun LoginContent(
+    viewModel: LoginViewModel = koinViewModel(),
+    nav: NavHostController,
     onLoginClick: () -> Unit,
     onBackClick: () -> Unit,
     onForgotPasswordClick: () -> Unit
 ) {
-    var login by rememberSaveable { mutableStateOf("") }
-    var password by rememberSaveable { mutableStateOf("") }
     var passwordVisible by rememberSaveable { mutableStateOf(false) }
     var isError by remember { mutableStateOf(false) }
 
-    val isFormValid = login.isNotBlank() && password.isNotBlank()
+    val isFormValid = viewModel.login.isNotBlank() && viewModel.password.isNotBlank()
+    val state = viewModel.state.collectAsStateWithLifecycle()
+
+    LaunchedEffect(viewModel.state, LocalLifecycleOwner.current) {
+        viewModel.state.collect { state ->
+            when(state) {
+                is ScreenIntent.Send -> {
+                    nav.navigate(MenuRoute)
+                    viewModel.onNavigated()
+                }
+                else -> {}
+            }
+        }
+    }
+
+
 
     Column(
         modifier = Modifier
@@ -79,10 +108,12 @@ private fun LoginContent(
 
         // Поле логина
         OutlinedTextField(
-            value = login,
+            value = viewModel.login,
+
             onValueChange = {
-                login = it
+                viewModel.login = it
                 isError = false
+
             },
             modifier = Modifier.fillMaxWidth(),
             label = {
@@ -99,8 +130,8 @@ private fun LoginContent(
                 )
             },
             trailingIcon = {
-                if (login.isNotEmpty()) {
-                    IconButton(onClick = { login = "" }) {
+                if (viewModel.login.isNotEmpty()) {
+                    IconButton(onClick = { viewModel.login = "" }) {
                         Icon(
                             imageVector = Icons.Default.Clear,
                             contentDescription = "Очистить",
@@ -129,9 +160,9 @@ private fun LoginContent(
 
         // Поле пароля
         OutlinedTextField(
-            value = password,
+            value = viewModel.password,
             onValueChange = {
-                password = it
+                viewModel.password = it
                 isError = false
             },
             modifier = Modifier.fillMaxWidth(),
@@ -235,35 +266,35 @@ private fun LoginContent(
 }
 
 // ==== PREVIEW ====
-@Preview(
-    showBackground = true,
-    showSystemUi = true
-)
-@Composable
-fun LoginScreenPreview() {
-    AndroidBootcamp2026FrontendTheme {
-        LoginContent(
-            onLoginClick = {},
-            onBackClick = {},
-            onForgotPasswordClick = {}
-        )
-    }
-}
-
-// Превью в тёмной теме
-@Preview(
-    showBackground = true,
-    backgroundColor = 0xFF111318,
-    showSystemUi = true,
-    uiMode = android.content.res.Configuration.UI_MODE_NIGHT_YES
-)
-@Composable
-fun LoginScreenDarkPreview() {
-    AndroidBootcamp2026FrontendTheme {
-        LoginContent(
-            onLoginClick = {},
-            onBackClick = {},
-            onForgotPasswordClick = {}
-        )
-    }
-}
+//@Preview(
+//    showBackground = true,
+//    showSystemUi = true
+//)
+//@Composable
+//fun LoginScreenPreview() {
+//    AndroidBootcamp2026FrontendTheme {
+//        LoginContent(
+//            onLoginClick = {},
+//            onBackClick = {},
+//            onForgotPasswordClick = {}
+//        )
+//    }
+//}
+//
+//// Превью в тёмной теме
+//@Preview(
+//    showBackground = true,
+//    backgroundColor = 0xFF111318,
+//    showSystemUi = true,
+//    uiMode = android.content.res.Configuration.UI_MODE_NIGHT_YES
+//)
+//@Composable
+//fun LoginScreenDarkPreview() {
+//    AndroidBootcamp2026FrontendTheme {
+//        LoginContent(
+//            onLoginClick = {},
+//            onBackClick = {},
+//            onForgotPasswordClick = {}
+//        )
+//    }
+//}

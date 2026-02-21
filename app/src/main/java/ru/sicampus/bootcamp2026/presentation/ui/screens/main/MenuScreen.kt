@@ -1,5 +1,6 @@
 package ru.sicampus.bootcamp2026.presentation.ui.screens.main
 
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Event
@@ -51,7 +52,8 @@ fun BottomNavBar(innerNav: NavHostController) {
     val route = backStack?.destination?.route
 
     NavigationBar(
-        containerColor = MaterialTheme.colorScheme.surfaceContainerLowest
+        containerColor = MaterialTheme.colorScheme.surfaceContainerLowest,
+        windowInsets = WindowInsets(0)
     ) {
         fun go(route: String) = innerNav.navigate(route) {
             popUpTo(innerNav.graph.findStartDestination().id) {

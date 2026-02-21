@@ -11,14 +11,14 @@ data class MeetDto(
     @SerialName("title") val title: String?,
     @SerialName("description") val description: String?,
     @SerialName("timeSlot") val timeSlot: MeetTimeSlotDto?,
-    @SerialName("membersIds") val membersIds: Set<Int>?,
-    @SerialName("invitedIds") val invitedIds: Set<Int>?,
+    @SerialName("membersIds") val membersIds: List<Long>?,
+    @SerialName("invitedIds") val invitedIds: List<Long>?,
     @SerialName("createdAt") val createdAt: String?, // ISO-8601 todo
 )
 
 @Serializable
 data class MeetTimeSlotDto(
-    @SerialName("id") val id: Long,
+    @SerialName("id") val id: Long?,
     @SerialName("date") val date: String?,
     @SerialName("startHour") val startHour: Int?,
     @SerialName("endHour") val endHour: Int?

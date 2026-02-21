@@ -1,4 +1,4 @@
-package ru.sicampus.bootcamp2026.domain.entities
+package ru.sicampus.bootcamp2026.domain.entities.user
 
 data class User(
     val id: Long,
@@ -7,6 +7,3 @@ data class User(
     val lastName: String,
     val photoUrl: String? = null,
 )
-
-
-

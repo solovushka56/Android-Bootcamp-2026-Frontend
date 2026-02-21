@@ -15,7 +15,7 @@ val viewModelModule = module {
 
     viewModel { InvitesViewModel() }
     viewModel { UsersViewModel() }
-    viewModel { MeetsViewModel() }
+    viewModel { MeetsViewModel(get(), get()) }
 
     viewModel { ProfileViewModel() }
 }

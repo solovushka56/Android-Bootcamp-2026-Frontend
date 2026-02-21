@@ -7,7 +7,7 @@ import ru.sicampus.bootcamp2026.data.mappers.toDto
 import ru.sicampus.bootcamp2026.data.source.local.ProfileLocalDataSource
 import ru.sicampus.bootcamp2026.data.source.remote.ProfileNetworkDataSource
 import ru.sicampus.bootcamp2026.domain.contracts.IProfileRepository
-import ru.sicampus.bootcamp2026.domain.entities.User
+import ru.sicampus.bootcamp2026.domain.entities.user.User
 
 class ProfileRepository(
     val profileLocalDataSource: ProfileLocalDataSource,

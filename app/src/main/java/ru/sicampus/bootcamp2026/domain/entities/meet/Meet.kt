@@ -7,7 +7,7 @@ data class Meet(
     val title: String,
     val description: String?,
     val timeSlot: MeetTimeSlot,
-    val membersIds: Set<Int>,
-    val invitedIds: Set<Int>,
+    val membersIds: List<Long>,
+    val invitedIds: List<Long>,
     val createdAt: Instant
 )

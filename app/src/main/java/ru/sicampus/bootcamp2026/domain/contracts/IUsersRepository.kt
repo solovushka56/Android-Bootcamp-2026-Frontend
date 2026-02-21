@@ -1,6 +1,6 @@
 package ru.sicampus.bootcamp2026.domain.contracts
 
-import ru.sicampus.bootcamp2026.domain.entities.User
+import ru.sicampus.bootcamp2026.domain.entities.user.User
 
 interface IUsersRepository {
     suspend fun findUsers(query: String): Result<List<User>>

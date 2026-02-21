@@ -3,7 +3,7 @@ package ru.sicampus.bootcamp2026.domain.usecases.auth
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertTrue
 import org.junit.Test
-import ru.sicampus.bootcamp2026.domain.entities.User
+import ru.sicampus.bootcamp2026.domain.entities.user.User
 import ru.sicampus.bootcamp2026.domain.entities.auth.UserAuth
 import ru.sicampus.bootcamp2026.testdoubles.FakeAuthRepository
 
